@@ -31,7 +31,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as views (the default). These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_package:
+  facebook_ads:
       # Applies to all files under models/example/
-      example:
-          materialized: view
+      vars:
+          ads_table: "{{ref('fb_ads_unioned')}}"
+          ad_creatives_table: "{{ref('fb_ad_creative_unioned')}}"
+          adsets_table: "{{ref('fb_adsets_unioned')}}"
+          campaigns_table: "{{ref('fb_campaigns_unioned')}}"
+          ads_insights_table: "{{ref('fb_ads_insights_unioned')}}"
